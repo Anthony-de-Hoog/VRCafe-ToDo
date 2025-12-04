@@ -1,36 +1,59 @@
 ---
 import '../css/todo.css';
-import TodoList from '../components/TodoList.astro';
 ---
 <html lang="nl">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>To‑Do App</title>
-  </head>
-  <body>
-    <header class="site-header">
-      <h1>Mijn To‑Do</h1>
-    </header>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>To‑Do App met Categorieën</title>
+</head>
+<body>
+<header class="site-header">
+  <h1>Mijn To‑Do</h1>
+</header>
 
-    <main>
-      <section aria-labelledby="tasks-title">
-        <h2 id="tasks-title">Taken</h2>
+<main>
+  <section class="new-task" aria-labelledby="new-task-title">
+    <h2 id="new-task-title">Nieuwe taak</h2>
+    <form id="new-todo-form" autocomplete="off">
+      <div class="field">
+        <label for="todo-input">Titel</label>
+        <input id="todo-input" name="title" placeholder="Voeg een taak toe…" required />
+      </div>
 
-        <form id="new-todo-form" autocomplete="off">
-          <label for="todo-input">Nieuwe taak</label>
-          <input id="todo-input" name="title" placeholder="Voeg een taak toe..." required />
-          <button type="submit">Toevoegen</button>
-        </form>
+      <div class="field">
+        <label for="category-select">Categorie</label>
+        <select id="category-select" name="category" required></select>
+      </div>
 
-        <TodoList />
-      </section>
-    </main>
+      <button type="submit">Toevoegen</button>
+    </form>
+  </section>
 
-    <footer class="site-footer">
-      <small>&copy; 2025</small>
-    </footer>
+  <section class="categories" aria-labelledby="manage-categories-title">
+    <h2 id="manage-categories-title">Categorieën beheren</h2>
+    <form id="new-category-form" autocomplete="off" class="category-form">
+      <div class="field">
+        <label for="new-category-input">Nieuwe categorie</label>
+        <input id="new-category-input" name="name" placeholder="Bijv. Werk, Persoonlijk…" />
+      </div>
+      <button type="submit">Categorie toevoegen</button>
+    </form>
+    <ul id="category-list" class="category-list" aria-live="polite"></ul>
+  </section>
 
-    <script type="module" src="/scripts/todo.js"></script>
-  </body>
+  <section class="tasks" aria-labelledby="tasks-by-category-title">
+    <h2 id="tasks-by-category-title">Taken per categorie</h2>
+    <div id="lists-by-category" class="category-lists" aria-live="polite"></div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <small>&copy; 2025</small>
+</footer>
+
+<script type="module">
+  import '/src/scripts/todo.js';
+</script>
+</body>
 </html>
