@@ -1,55 +1,100 @@
 ---
+import '../css/brand.css';
 import '../css/todo.css';
 ---
 <html lang="nl">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>To‑Do App met Categorieën</title>
+  <title>VRCafe To‑Do</title>
+  <meta name="description" content="To‑Do app met categorieën voor VRCafe Haarlem." />
 </head>
 <body>
-<header class="site-header">
-  <h1>Mijn To‑Do</h1>
+<header class="site-header panel">
+  <div class="brand">
+    <img src="/images/Logo.jpg" alt="VRCafe Haarlem" class="logo" onerror="this.style.display='none'" />
+    <div class="brand-text">
+      <strong class="brand-name">VRCafe Haarlem</strong>
+      <span class="brand-tagline">ToDo List</span>
+    </div>
+  </div>
+  <nav class="site-nav" aria-label="Hoofdnavigatie"></nav>
 </header>
 
-<main>
-  <section class="new-task" aria-labelledby="new-task-title">
-    <h2 id="new-task-title">Nieuwe taak</h2>
-    <form id="new-todo-form" autocomplete="off">
-      <div class="field">
-        <label for="todo-input">Titel</label>
-        <input id="todo-input" name="title" placeholder="Voeg een taak toe…" required />
+<main class="layout">
+  <aside class="category-nav panel" aria-labelledby="category-nav-title">
+    <div class="category-nav-header">
+      <h2 id="category-nav-title">CATEGORIEËN</h2>
+
+      <button id="catNavToggle" class="btn catnav-toggle" aria-expanded="false" aria-controls="catNavBody">
+        Toon categorieën
+      </button>
+    </div>
+
+    <div id="catNavBody" class="category-nav-body">
+      <ul id="categoryTabs" class="category-tabs" role="tablist" aria-label="Categorie tabs">
+      </ul>
+
+      <div class="category-dropdown">
+        <label for="categoryFilterSelect">CATEGORIE KIEZEN</label>
+        <select id="categoryFilterSelect" name="categoryFilter">
+        </select>
       </div>
+    </div>
+  </aside>
 
-      <div class="field">
-        <label for="category-select">Categorie</label>
-        <select id="category-select" name="category" required></select>
-      </div>
+  <section class="content">
+    <section class="new-task panel" aria-labelledby="new-task-title">
+      <h2 id="new-task-title">NIEUWE TAAK</h2>
+      <form id="new-todo-form" autocomplete="off">
+        <div class="field">
+          <label for="todo-input">TITEL</label>
+          <input id="todo-input" name="title" placeholder="Voeg Een Taak Toe…" required />
+        </div>
 
-      <button type="submit">Toevoegen</button>
-    </form>
-  </section>
+        <div class="field">
+          <label for="category-select">CATEGORIE</label>
+          <select id="category-select" name="category" required></select>
+        </div>
 
-  <section class="categories" aria-labelledby="manage-categories-title">
-    <h2 id="manage-categories-title">Categorieën beheren</h2>
-    <form id="new-category-form" autocomplete="off" class="category-form">
-      <div class="field">
-        <label for="new-category-input">Nieuwe categorie</label>
-        <input id="new-category-input" name="name" placeholder="Bijv. Werk, Persoonlijk…" />
-      </div>
-      <button type="submit">Categorie toevoegen</button>
-    </form>
-    <ul id="category-list" class="category-list" aria-live="polite"></ul>
-  </section>
+        <button type="submit" class="btn primary">Toevoegen</button>
+      </form>
+    </section>
 
-  <section class="tasks" aria-labelledby="tasks-by-category-title">
-    <h2 id="tasks-by-category-title">Taken per categorie</h2>
-    <div id="lists-by-category" class="category-lists" aria-live="polite"></div>
+    <section class="categories panel" aria-labelledby="manage-categories-title">
+      <h2 id="manage-categories-title">CATEGORIEËN BEHEREN</h2>
+      <form id="new-category-form" autocomplete="off" class="category-form">
+        <div class="field">
+          <label for="new-category-input">NIEUWE CATEGORIE</label>
+          <input id="new-category-input" name="name" placeholder="Bijv. Werk, Persoonlijk…" />
+        </div>
+        <input id="new-category-color" name="color" type="color" aria-label="Categorie kleur" value="#36f0a9" hidden />
+        <button id="new-category-submit" type="submit" class="btn">Categorie Toevoegen</button>
+
+        <div id="category-color-popover" class="color-popover" hidden>
+          <p class="popover-title">Kleur kiezen</p>
+          <div class="swatches">
+            <button type="button" class="swatch" data-color="var(--brand-text-blue)" aria-label="Blauw"></button>
+            <button type="button" class="swatch" data-color="var(--brand-text-green)" aria-label="Groen"></button>
+            <button type="button" class="swatch" data-color="var(--brand-text-pink)" aria-label="Roze"></button>
+          </div>
+          <div class="popover-actions">
+            <button type="button" class="btn popover-cancel">Annuleren</button>
+          </div>
+        </div>
+      </form>
+      <ul id="category-list" class="category-list" aria-live="polite"></ul>
+    </section>
+
+    <section class="tasks panel" aria-labelledby="tasks-by-category-title">
+      <h2 id="tasks-by-category-title">Taken per categorie</h2>
+      <div id="lists-by-category" class="category-lists" aria-live="polite"></div>
+    </section>
   </section>
 </main>
 
 <footer class="site-footer">
-  <small>&copy; 2025</small>
+  <small>&copy; 2025 VRCafe Haarlem</small>
 </footer>
 
 <script type="module">

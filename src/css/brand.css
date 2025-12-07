@@ -1,0 +1,158 @@
+@layer theme {
+    :root {
+        --brand-bg-gradient-1: #62108e;
+        --brand-bg-gradient-2: #3f44b6;
+        --brand-surface: #61108d;
+        --brand-border: #62108e;
+
+        --brand-text-green: #36f0a9;
+        --brand-text-pink: #fb3e80;
+        --brand-text-blue: #2eaafc;
+
+        --brand-text: #ffffff;
+        --brand-muted: #e6d8ff;
+
+        --success: #27c93f;
+        --warning: #ffbd2e;
+        --error: #ff5f56;
+
+        --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+        --font-display: "Inter", var(--font-sans);
+        --heading-weight: 800;
+
+        --radius-sm: 10px;
+        --radius-md: 16px;
+        --radius-lg: 22px;
+
+        --shadow-1: 0 12px 36px rgba(0,0,0,.35);
+        --shadow-2: 0 6px 18px rgba(0,0,0,.25);
+
+        --max-width: 1100px;
+        --gap: 12px;
+        --gap-lg: 18px;
+        --padding: 16px;
+    }
+
+    * { box-sizing: border-box }
+
+    html {
+        background:
+                radial-gradient(1000px 600px at 50% 40%, color-mix(in oklab, var(--brand-bg-gradient-1) 45%, transparent) 0%, transparent 60%),
+                linear-gradient(135deg,
+                var(--brand-bg-gradient-1) 0%,
+                color-mix(in oklab, var(--brand-bg-gradient-1) 70%, var(--brand-bg-gradient-2)) 35%,
+                color-mix(in oklab, var(--brand-bg-gradient-1) 55%, var(--brand-bg-gradient-2)) 60%,
+                color-mix(in oklab, var(--brand-bg-gradient-1) 35%, var(--brand-bg-gradient-2)) 78%,
+                var(--brand-bg-gradient-2) 100%
+                );
+    }
+
+    body {
+        margin: 0;
+        min-height: 100dvh;
+        background:
+                radial-gradient(
+                        1000px 600px at 50% 40%,
+                        color-mix(in oklab, var(--brand-bg-gradient-1) 45%, transparent) 0%,
+                        transparent 60%
+                ),
+                linear-gradient(
+                        135deg,
+                        var(--brand-bg-gradient-1) 0%,
+                        color-mix(in oklab, var(--brand-bg-gradient-1) 70%, var(--brand-bg-gradient-2)) 35%,
+                        color-mix(in oklab, var(--brand-bg-gradient-1) 55%, var(--brand-bg-gradient-2)) 60%,
+                        color-mix(in oklab, var(--brand-bg-gradient-1) 35%, var(--brand-bg-gradient-2)) 78%,
+                        var(--brand-bg-gradient-2) 100%
+                );
+        color: var(--brand-text);
+        font-family: var(--font-sans);
+        line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+        font-family: var(--font-display);
+        font-weight: var(--heading-weight);
+        letter-spacing: .2px;
+        color: var(--brand-text);
+    }
+
+    h1 strong, h1 em { color: var(--brand-text-pink); font-style: normal; }
+    h2 strong, h2 em { color: var(--brand-text-blue); font-style: normal; }
+    h3 strong, h3 em { color: var(--brand-text-green); font-style: normal; }
+
+    a { color: var(--brand-text-blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+}
+
+.text-green   { color: var(--brand-text-green); }
+.text-pink    { color: var(--brand-text-pink); }
+.text-blue    { color: var(--brand-text-blue); }
+.text-muted   { color: var(--brand-muted); }
+.text-contrast{ color: var(--brand-text); }
+
+.badge {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    border-radius: 999px;
+    font-size: .85rem;
+    line-height: 1;
+    border: 1px solid color-mix(in oklab, var(--brand-border) 40%, transparent);
+    background: color-mix(in oklab, var(--brand-surface) 90%, black 10%);
+    color: var(--brand-text);
+}
+.badge.green { color: var(--brand-text-green); border-color: color-mix(in oklab, var(--brand-text-green) 40%, var(--brand-border)); }
+.badge.pink  { color: var(--brand-text-pink);  border-color: color-mix(in oklab, var(--brand-text-pink)  40%, var(--brand-border)); }
+.badge.blue  { color: var(--brand-text-blue);  border-color: color-mix(in oklab, var(--brand-text-blue)  40%, var(--brand-border)); }
+
+.site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--gap);
+    padding: 20px var(--padding);
+    border-bottom: 1px solid color-mix(in oklab, var(--brand-border) 40%, transparent);
+    background: color-mix(in oklab, var(--brand-surface) 85%, black 15%);
+    backdrop-filter: blur(8px);
+}
+.brand { display: flex; align-items: center; gap: 14px; }
+.logo { width: 54px; height: 54px; object-fit: contain; filter: drop-shadow(0 4px 12px rgba(0,0,0,.45)); }
+.brand-name { font-weight: var(--heading-weight); letter-spacing: .2px; }
+.brand-tagline { display: block; font-size: .9rem; color: var(--brand-muted); }
+
+.site-footer {
+    padding: 22px var(--padding);
+    border-top: 1px solid color-mix(in oklab, var(--brand-border) 40%, transparent);
+    color: var(--brand-muted);
+    background: color-mix(in oklab, var(--brand-surface) 88%, black 12%);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 -6px 18px rgb(24, 20, 26) inset;
+}
+
+.btn {
+    border: 1px solid color-mix(in oklab, var(--brand-border) 60%, transparent);
+    background: color-mix(in oklab, var(--brand-surface) 85%, black 15%);
+    color: var(--brand-text);
+    padding: 12px 16px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: transform .06s ease, background .2s ease, border-color .2s ease;
+    box-shadow: var(--shadow-2);
+}
+.btn:hover { transform: translateY(-1px); border-color: color-mix(in oklab, var(--brand-secondary) 40%, var(--brand-border)); }
+.btn:active { transform: translateY(0); }
+.btn.primary {
+    background: var(--brand-text-green);
+    color: var(--brand-primary-contrast);
+    border-color: color-mix(in oklab, var(--brand-text-green) 60%, var(--brand-border));
+}
+.btn.primary:hover {
+    filter: brightness(1.06);
+    border-color: color-mix(in oklab, var(--brand-text-green) 70%, var(--brand-border));
+}
+
+.panel {
+    background: color-mix(in oklab, var(--brand-surface) 88%, black 12%);
+    border: 1px solid color-mix(in oklab, var(--brand-border) 50%, transparent);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-1);
+}
